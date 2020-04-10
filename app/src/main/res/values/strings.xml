@@ -2,4 +2,6 @@
     <string name="app_name">Test Application</string>
     <string name="images_list">Список изображений</string>
     <string name="view_image">Просмотр изображения</string>
+    <string name="network_error">Ошибка сети</string>
+    <string name="parse_error">Что-то пошло не так, но мы исправим</string>
 </resources>

@@ -17,6 +17,15 @@ public class ImagesListPresenter extends MvpPresenter<ImagesListView> {
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
         model = new ImagesListModel();
+        updateImages();
+    }
+
+    public void updateImages(){
+        getViewState().showPreviewScreen();
+        getImages();
+    }
+
+    private void getImages(){
         model.getImages(new ImagesListPresenterCallback() {
             @Override
             public void setImagesList(List<String> images) {
@@ -24,8 +33,8 @@ public class ImagesListPresenter extends MvpPresenter<ImagesListView> {
             }
 
             @Override
-            public void onError(String stringResId) {
-
+            public void onError(int stringResId) {
+                getViewState().showError(stringResId);
             }
         });
     }

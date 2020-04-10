@@ -8,6 +8,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,11 +26,12 @@ import com.example.testapplication.ui.fragment.base.BaseFragment;
 
 import java.util.List;
 
-public class ImagesListFragment extends BaseFragment implements ImagesListView, ImagesListAdapterCallback {
+public class ImagesListFragment extends BaseFragment implements
+        ImagesListView, ImagesListAdapterCallback, SwipeRefreshLayout.OnRefreshListener {
 
     @InjectPresenter
     ImagesListPresenter presenter;
-    private RecyclerView imagesRecyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private ImagesListAdapter adapter;
 
     @Override
@@ -41,7 +43,9 @@ public class ImagesListFragment extends BaseFragment implements ImagesListView, 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        imagesRecyclerView = view.findViewById(R.id.images_recyclerview);
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        RecyclerView imagesRecyclerView = view.findViewById(R.id.images_recyclerview);
         imagesRecyclerView.setLayoutManager(getLayoutManager());
         adapter = new ImagesListAdapter(getContext(), this);
         imagesRecyclerView.setAdapter(adapter);
@@ -49,7 +53,13 @@ public class ImagesListFragment extends BaseFragment implements ImagesListView, 
 
     @Override
     public void showImages(List<String> images) {
+        swipeRefreshLayout.setRefreshing(false);
         adapter.setImagesList(images);
+    }
+
+    @Override
+    public void showPreviewScreen() {
+        swipeRefreshLayout.setRefreshing(true);
     }
 
     @Override
@@ -61,5 +71,10 @@ public class ImagesListFragment extends BaseFragment implements ImagesListView, 
 
     private LayoutManager getLayoutManager(){
         return new GridLayoutManager(getContext(), 2);
+    }
+
+    @Override
+    public void onRefresh() {
+        presenter.updateImages();
     }
 }
