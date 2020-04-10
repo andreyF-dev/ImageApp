@@ -28,7 +28,7 @@ public class ImagesListAdapter extends RecyclerView.Adapter<ImageHolder> impleme
 
     public void setImagesList(List<String> imagesList) {
         this.imagesList = imagesList;
-        notify();
+        notifyDataSetChanged();
     }
 
     @NonNull

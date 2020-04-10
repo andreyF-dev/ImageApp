@@ -29,7 +29,9 @@ public class ImageHolder extends RecyclerView.ViewHolder implements View.OnClick
     }
 
     private void setImageView(String imageUrl) {
-        Picasso.get().load(imageUrl).centerCrop().into(imageView);
+        Picasso.get()
+                .load(imageUrl)
+                .into(imageView);
     }
 
     @Override
