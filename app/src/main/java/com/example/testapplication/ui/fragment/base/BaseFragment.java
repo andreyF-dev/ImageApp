@@ -1,4 +1,4 @@
-package com.example.testapplication.ui.fragment;
+package com.example.testapplication.ui.fragment.base;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.example.testapplication.mvp.view.base.BaseView;

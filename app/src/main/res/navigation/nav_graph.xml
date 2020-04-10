@@ -8,6 +8,10 @@
     <fragment
         android:id="@+id/imagesListFragment"
         android:name="com.example.testapplication.ui.fragment.ImagesListFragment"
-        android:label="fragment_images_list"
+        android:label="@string/images_list"
         tools:layout="@layout/fragment_images_list" />
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="com.example.testapplication.ui.fragment.ImageFragment"
+        android:label="@string/view_image" />
 </navigation>

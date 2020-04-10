@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
@@ -14,10 +15,13 @@ import android.view.ViewGroup;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.testapplication.R;
+import com.example.testapplication.description.BundleConst;
+import com.example.testapplication.description.LayoutId;
 import com.example.testapplication.mvp.presenter.ImagesListPresenter;
 import com.example.testapplication.mvp.view.ImagesListView;
 import com.example.testapplication.ui.adapter.ImagesListAdapter;
 import com.example.testapplication.ui.adapter.handler.ImagesListAdapterCallback;
+import com.example.testapplication.ui.fragment.base.BaseFragment;
 
 import java.util.List;
 
@@ -50,7 +54,9 @@ public class ImagesListFragment extends BaseFragment implements ImagesListView, 
 
     @Override
     public void onClickImage(String url) {
-        //TODO set imageUrl
+        Bundle bundle = new Bundle();
+        bundle.putString(BundleConst.IMAGE_URL, url);
+        Navigation.findNavController(getView()).navigate(LayoutId.IMAGE_FRAGMENT, bundle);
     }
 
     private LayoutManager getLayoutManager(){
