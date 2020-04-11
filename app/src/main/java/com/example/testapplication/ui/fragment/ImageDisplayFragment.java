@@ -14,7 +14,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.example.testapplication.R;
 import com.example.testapplication.description.BundleConst;
-import com.example.testapplication.mvp.presenter.ImagePresenter;
+import com.example.testapplication.mvp.presenter.ImageDisplayPresenter;
 import com.example.testapplication.ui.fragment.base.BaseFragment;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -23,14 +23,14 @@ import com.squareup.picasso.Picasso;
 public class ImageDisplayFragment extends BaseFragment implements ImageDisplayView {
 
     @InjectPresenter
-    ImagePresenter presenter;
+    ImageDisplayPresenter presenter;
     private ImageView imageView;
 
 
     @ProvidePresenter
-    ImagePresenter providePresenter() {
+    ImageDisplayPresenter providePresenter() {
         String imageUrl = getArguments().getString(BundleConst.IMAGE_URL);
-        return new ImagePresenter(imageUrl);
+        return new ImageDisplayPresenter(imageUrl);
     }
 
     @Override
@@ -49,7 +49,6 @@ public class ImageDisplayFragment extends BaseFragment implements ImageDisplayVi
     public void showImage(String imageUrl) {
         Picasso.get()
                 .load(imageUrl)
-                .error(R.drawable.ic_error_image)
                 .into(imageView, new Callback() {
                     @Override
                     public void onSuccess() {
@@ -58,8 +57,13 @@ public class ImageDisplayFragment extends BaseFragment implements ImageDisplayVi
 
                     @Override
                     public void onError(Exception e) {
-                        showError(R.string.parse_error, () -> presenter.setImage());
+                        presenter.onImageLoadError();
                     }
                 });
+    }
+
+    @Override
+    public void showDefaultImage() {
+        imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_error_image));
     }
 }
