@@ -5,6 +5,7 @@ import com.arellomobile.mvp.MvpPresenter;
 import com.example.testapplication.mvp.model.ImagesListModel;
 import com.example.testapplication.mvp.presenter.callback.ImagesListPresenterCallback;
 import com.example.testapplication.mvp.view.ImagesListView;
+import com.example.testapplication.mvp.view.base.handler.ErrorHandlerCallback;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class ImagesListPresenter extends MvpPresenter<ImagesListView> {
 
             @Override
             public void onError(int stringResId) {
-                getViewState().showError(stringResId);
+                getViewState().showError(stringResId, () -> updateImages());
             }
         });
     }
