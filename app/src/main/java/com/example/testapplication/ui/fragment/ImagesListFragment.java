@@ -62,7 +62,7 @@ public class ImagesListFragment extends BaseFragment implements
     @Override
     public void onClickImage(String url) {
         View view = getView();
-        if (view == null){
+        if (view == null) {
             return;
         }
         Bundle bundle = new Bundle();

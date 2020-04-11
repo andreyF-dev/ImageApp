@@ -20,7 +20,7 @@ public class ImagesListPresenter extends MvpPresenter<ImagesListView> {
         updateImages();
     }
 
-    public void updateImages(){
+    public void updateImages() {
         getViewState().hideError();
         getViewState().showPreviewScreen();
         getImages();

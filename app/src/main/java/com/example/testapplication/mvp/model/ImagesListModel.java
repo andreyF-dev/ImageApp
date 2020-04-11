@@ -3,6 +3,7 @@ package com.example.testapplication.mvp.model;
 import com.example.testapplication.mvp.presenter.callback.ImagesListPresenterCallback;
 import com.example.testapplication.network.NetworkHelper;
 import com.example.testapplication.network.handler.NetworkCallback;
+
 import java.util.List;
 
 public class ImagesListModel {

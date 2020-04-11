@@ -9,7 +9,7 @@ public class ImagePresenter extends MvpPresenter<ImageDisplayView> {
 
     private String imageUrl;
 
-    public ImagePresenter (String imageUrl){
+    public ImagePresenter(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 

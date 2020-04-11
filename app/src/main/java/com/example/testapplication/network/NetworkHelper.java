@@ -23,7 +23,7 @@ public class NetworkHelper {
                 response -> {
                     try {
                         callback.onSuccess(formatJsonToStringsList(response));
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         callback.onError(R.string.parse_error);
                     }
                 }, error -> callback.onError(R.string.network_error));
@@ -32,7 +32,8 @@ public class NetworkHelper {
 
     private List<String> formatJsonToStringsList(String response) {
         Gson gson = new Gson();
-        Type listType = new TypeToken<List<String>>() {}.getType();
+        Type listType = new TypeToken<List<String>>() {
+        }.getType();
         return gson.fromJson(response, listType);
     }
 }

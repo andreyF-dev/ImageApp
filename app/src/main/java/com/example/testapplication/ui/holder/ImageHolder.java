@@ -10,7 +10,7 @@ import com.example.testapplication.R;
 import com.example.testapplication.ui.holder.handler.ImageHolderCallback;
 import com.squareup.picasso.Picasso;
 
-public class ImageHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class ImageHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private ImageView imageView;
     private String imageUrl;
@@ -22,7 +22,7 @@ public class ImageHolder extends RecyclerView.ViewHolder implements View.OnClick
         itemView.setOnClickListener(this);
     }
 
-    public void onBind(String imageUrl, ImageHolderCallback callback){
+    public void onBind(String imageUrl, ImageHolderCallback callback) {
         this.imageUrl = imageUrl;
         this.callback = callback;
         setImageView(imageUrl);

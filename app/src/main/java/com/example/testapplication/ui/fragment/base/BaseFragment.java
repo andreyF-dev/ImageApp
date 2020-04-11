@@ -15,7 +15,7 @@ public class BaseFragment extends MvpAppCompatFragment implements BaseView {
     @Override
     public void showError(int stringResId, final ErrorHandlerCallback callback) {
         View view = getView();
-        if (view == null){
+        if (view == null) {
             return;
         }
         snackbar = Snackbar.make(view, getString(stringResId), Snackbar.LENGTH_INDEFINITE);
@@ -25,7 +25,7 @@ public class BaseFragment extends MvpAppCompatFragment implements BaseView {
 
     @Override
     public void hideError() {
-        if (snackbar != null){
+        if (snackbar != null) {
             snackbar.dismiss();
         }
     }
