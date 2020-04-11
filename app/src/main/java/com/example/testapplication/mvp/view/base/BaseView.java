@@ -1,7 +1,5 @@
 package com.example.testapplication.mvp.view.base;
 
-import android.view.View;
-
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleTagStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;

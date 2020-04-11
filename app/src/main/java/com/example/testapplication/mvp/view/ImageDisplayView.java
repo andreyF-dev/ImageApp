@@ -4,13 +4,8 @@ import com.arellomobile.mvp.viewstate.strategy.SingleStateStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import com.example.testapplication.mvp.view.base.BaseView;
 
-import java.util.List;
-
-public interface ImagesListView extends BaseView {
+public interface ImageDisplayView extends BaseView {
 
     @StateStrategyType(SingleStateStrategy.class)
-    void showImages(List<String> images);
-
-    @StateStrategyType(SingleStateStrategy.class)
-    void showPreviewScreen();
+    void showImage(String imageUrl);
 }

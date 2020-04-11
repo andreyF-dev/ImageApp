@@ -1,7 +1,5 @@
 package com.example.testapplication.ui.fragment.base;
 
-import android.view.View;
-
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.example.testapplication.R;
 import com.example.testapplication.mvp.view.base.BaseView;
@@ -21,6 +19,14 @@ public class BaseFragment extends MvpAppCompatFragment implements BaseView {
 
     @Override
     public void hideError() {
+        if (snackbar != null){
+            snackbar.dismiss();
+        }
+    }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        hideError();
     }
 }

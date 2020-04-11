@@ -45,14 +45,14 @@ public class ImagesListAdapter extends RecyclerView.Adapter<ImageHolder> impleme
 
     @Override
     public int getItemCount() {
-        if (imagesList == null) {
-            return 0;
+        if (imagesList != null) {
+            return imagesList.size();
         }
-        return imagesList.size();
+        return 0;
     }
 
     @Override
-    public void onClick(String imageUrl) {
+    public void onClickImageHolder(String imageUrl) {
         callback.onClickImage(imageUrl);
     }
 }

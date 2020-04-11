@@ -31,11 +31,12 @@ public class ImageHolder extends RecyclerView.ViewHolder implements View.OnClick
     private void setImageView(String imageUrl) {
         Picasso.get()
                 .load(imageUrl)
+                .error(R.drawable.ic_error_image)
                 .into(imageView);
     }
 
     @Override
     public void onClick(View v) {
-        callback.onClick(imageUrl);
+        callback.onClickImageHolder(imageUrl);
     }
 }

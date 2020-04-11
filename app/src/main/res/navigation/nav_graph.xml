@@ -12,6 +12,6 @@
         tools:layout="@layout/fragment_images_list" />
     <fragment
         android:id="@+id/imageFragment"
-        android:name="com.example.testapplication.ui.fragment.ImageFragment"
+        android:name="com.example.testapplication.ui.fragment.ImageDisplayFragment"
         android:label="@string/view_image" />
 </navigation>
