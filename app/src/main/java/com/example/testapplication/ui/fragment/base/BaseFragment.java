@@ -1,5 +1,7 @@
 package com.example.testapplication.ui.fragment.base;
 
+import android.view.View;
+
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.example.testapplication.R;
 import com.example.testapplication.mvp.view.base.BaseView;
@@ -12,7 +14,11 @@ public class BaseFragment extends MvpAppCompatFragment implements BaseView {
 
     @Override
     public void showError(int stringResId, final ErrorHandlerCallback callback) {
-        snackbar = Snackbar.make(getView(), getString(stringResId), Snackbar.LENGTH_INDEFINITE);
+        View view = getView();
+        if (view == null){
+            return;
+        }
+        snackbar = Snackbar.make(view, getString(stringResId), Snackbar.LENGTH_INDEFINITE);
         snackbar.setAction(R.string.retry, v -> callback.onClickRetry());
         snackbar.show();
     }

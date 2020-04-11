@@ -5,9 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
@@ -46,7 +44,6 @@ public class ImagesListFragment extends BaseFragment implements
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
         RecyclerView imagesRecyclerView = view.findViewById(R.id.images_recyclerview);
-        imagesRecyclerView.setLayoutManager(getLayoutManager());
         adapter = new ImagesListAdapter(getContext(), this);
         imagesRecyclerView.setAdapter(adapter);
     }
@@ -64,13 +61,13 @@ public class ImagesListFragment extends BaseFragment implements
 
     @Override
     public void onClickImage(String url) {
+        View view = getView();
+        if (view == null){
+            return;
+        }
         Bundle bundle = new Bundle();
         bundle.putString(BundleConst.IMAGE_URL, url);
-        Navigation.findNavController(getView()).navigate(LayoutId.IMAGE_FRAGMENT, bundle);
-    }
-
-    private LayoutManager getLayoutManager(){
-        return new GridLayoutManager(getContext(), 2);
+        Navigation.findNavController(view).navigate(LayoutId.IMAGE_FRAGMENT, bundle);
     }
 
     @Override
