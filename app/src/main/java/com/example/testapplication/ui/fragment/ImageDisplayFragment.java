@@ -57,6 +57,7 @@ public class ImageDisplayFragment extends BaseFragment implements ImageDisplayVi
 
                     @Override
                     public void onError(Exception e) {
+                        e.printStackTrace();
                         presenter.onImageLoadError();
                     }
                 });

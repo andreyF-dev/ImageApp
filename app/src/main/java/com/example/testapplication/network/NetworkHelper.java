@@ -32,8 +32,7 @@ public class NetworkHelper {
 
     private List<String> formatJsonToStringsList(String response) {
         Gson gson = new Gson();
-        Type listType = new TypeToken<List<String>>() {
-        }.getType();
+        Type listType = new TypeToken<List<String>>() {}.getType();
         return gson.fromJson(response, listType);
     }
 }

@@ -22,6 +22,7 @@ import com.example.testapplication.ui.adapter.ImagesListAdapter;
 import com.example.testapplication.ui.adapter.handler.ImagesListAdapterCallback;
 import com.example.testapplication.ui.fragment.base.BaseFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ImagesListFragment extends BaseFragment implements
@@ -57,6 +58,7 @@ public class ImagesListFragment extends BaseFragment implements
     @Override
     public void showPreviewScreen() {
         swipeRefreshLayout.setRefreshing(true);
+        adapter.setImagesList(new ArrayList<>());
     }
 
     @Override

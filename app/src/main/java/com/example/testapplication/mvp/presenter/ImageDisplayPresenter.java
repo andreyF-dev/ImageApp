@@ -26,7 +26,7 @@ public class ImageDisplayPresenter extends MvpPresenter<ImageDisplayView> {
     }
 
     public void onImageLoadError(){
-        getViewState().showError(R.string.parse_error, () -> setImage());
+        getViewState().showError(R.string.image_load_error, this::setImage);
         getViewState().showDefaultImage();
     }
 }
